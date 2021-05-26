@@ -482,7 +482,8 @@ module JsonApi::Parameters::Testing
           photo: {
             title: 'Ember Hamster',
             src: 'http://example.com/images/productivity.png',
-            photographer_ids: []
+            photographer_ids: [],
+            photographers_attributes: []
           }
         }
       ] },
@@ -505,7 +506,8 @@ module JsonApi::Parameters::Testing
           account: {
             name: 'Bob Loblaw',
             profile_url: 'http://example.com/images/no-nonsense.png',
-            owner_id: nil
+            owner_id: nil,
+            owner_attributes: []
           }
         }
       ] },
@@ -526,7 +528,7 @@ module JsonApi::Parameters::Testing
         },
         {
           user: {
-            name: 'Adam Joe', practice_area_ids: [],
+            name: 'Adam Joe', practice_area_ids: [], practice_areas_attributes: []
           }
         }
       ] },
@@ -546,7 +548,7 @@ module JsonApi::Parameters::Testing
         },
         {
           user: {
-            name: 'Adam Joe', practice_area_ids: [],
+            name: 'Adam Joe', practice_area_ids: [], practice_areas_attributes: []
           }
         }
       ] },

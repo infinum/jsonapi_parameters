@@ -20,7 +20,7 @@ module JsonApi
             end
 
             # Handle with empty hash.
-            ToOneRelationHandler.new(relationship_key, {}, {}).handle
+            EmptyToOneRelationHandler.new(relationship_key, {}, {}).handle
           end
         end
       end

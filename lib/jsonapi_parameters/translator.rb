@@ -72,6 +72,8 @@ module JsonApi::Parameters
                 Handlers.handlers[Handlers.resource_handlers[relationship_key]]
               else
                 case relationship_value
+                when []
+                  Handlers.handlers[:empty_to_many]
                 when Array
                   Handlers.handlers[:to_many]
                 when Hash
@@ -83,13 +85,24 @@ module JsonApi::Parameters
                 end
               end
 
-    key, val = handler.call(*handler_args)
+    handled_params = handler.call(*handler_args)
 
-    param[key] = handle_nested_relationships(val)
+    add_relationships_to_params(handled_params, param)
 
     param
   ensure
     decrement_stack_level
+  end
+
+  def add_relationships_to_params(handled_params, param)
+    if handled_params.all?(Array)
+      handled_params.each do |key, val|
+        param[key] = handle_nested_relationships(val)
+      end
+    else
+      key, val = *handled_params
+      param[key] = handle_nested_relationships(val)
+    end
   end
 
   def handle_nested_relationships(val)

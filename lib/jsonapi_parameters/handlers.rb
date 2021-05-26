@@ -1,6 +1,8 @@
 require_relative 'default_handlers/nil_relation_handler'
 require_relative 'default_handlers/to_many_relation_handler'
 require_relative 'default_handlers/to_one_relation_handler'
+require_relative 'default_handlers/empty_to_one_relation_handler'
+require_relative 'default_handlers/empty_to_many_relation_handler'
 
 module JsonApi
   module Parameters
@@ -8,6 +10,7 @@ module JsonApi
       include DefaultHandlers
 
       DEFAULT_HANDLER_SET = {
+        empty_to_many: EmptyToManyRelationHandler,
         to_many: ToManyRelationHandler,
         to_one: ToOneRelationHandler,
         nil: NilRelationHandler
