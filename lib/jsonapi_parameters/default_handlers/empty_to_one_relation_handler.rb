@@ -11,7 +11,7 @@ module JsonApi
 
           def handle
             [
-              ["#{singularize(relationship_key)}_attributes".to_sym, []],
+              ["#{singularize(relationship_key)}_attributes".to_sym, {}],
               ["#{singularize(relationship_key)}_id".to_sym, nil]
             ]
           end
